@@ -1,5 +1,7 @@
-import React, { Component, Text } from 'react'
+import React, { Component } from 'react'
 import User from '../components/User'
+import * as actions from '../redux/actions'
+import { connect } from 'react-redux'
 
 class UserList extends Component {
 
@@ -25,7 +27,7 @@ class UserList extends Component {
 				) :
 				(
 				<div>
-					<span></span>
+					<span>There are no users to show</span>
 				</div>
 				)
 			}
@@ -34,4 +36,9 @@ class UserList extends Component {
 	}
 }
 
-export default UserList
+
+const mapStateToProps = ({ users }) => ({
+	users      
+})
+
+export default connect(mapStateToProps, actions)(UserList)
